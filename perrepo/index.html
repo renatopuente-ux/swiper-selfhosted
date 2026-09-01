@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swiper 14.2.0 · copia auto-hospedada</title>
+
+<!-- Los estilos de Swiper salen de este mismo repo, no de un CDN externo. -->
+<link rel="stylesheet" href="./dist/swiper-bundle.min.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1e293b; --ink-weak:#475569; --navy:#151F47; --indigo:#4C64D9;
+  --bg:#f5f6fa; --card:#ffffff; --line:rgba(0,17,102,.10);
+  --ok-bg:#E8F5E9; --ok-ink:#1B5E20; --ok-bd:#A5D6A7;
+  --warn-bg:#FFF4E5; --warn-ink:#663C00; --warn-bd:#FFCC80;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Nunito,-apple-system,Segoe UI,sans-serif;color:var(--ink);
+  background:var(--bg);line-height:1.6}
+.wrap{max-width:940px;margin:0 auto;padding:0 20px 80px}
+header{padding:52px 0 28px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--indigo);margin-bottom:10px}
+h1{margin:0 0 8px;font-size:32px;line-height:1.2;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.lead{margin:0;color:var(--ink-weak);max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;
+  font-size:12px;font-weight:700;border:1px solid transparent}
+.chip.ok{background:var(--ok-bg);color:var(--ok-ink);border-color:var(--ok-bd)}
+.chip.neutral{background:#EEF1F7;color:var(--ink-weak);border-color:var(--line)}
+h2{font-size:19px;font-weight:800;color:var(--navy);margin:44px 0 6px}
+h2 + p{margin:0 0 18px;color:var(--ink-weak);font-size:14.5px}
+
+/* ── El carrusel ── */
+.demo{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;
+  box-shadow:0 1px 2px rgba(15,23,42,.05)}
+.swiper{width:100%;border-radius:12px;overflow:hidden}
+.swiper-slide{display:grid;place-items:center;height:280px;color:#fff;font-size:34px;
+  font-weight:800;letter-spacing:-.01em;user-select:none}
+.s1{background:linear-gradient(135deg,#151F47,#3C76F1)}
+.s2{background:linear-gradient(135deg,#3C76F1,#4C64D9)}
+.s3{background:linear-gradient(135deg,#DE5E2D,#F2A65A)}
+.s4{background:linear-gradient(135deg,#0E7C66,#4CAF50)}
+.s5{background:linear-gradient(135deg,#5F2120,#B4453C)}
+/* El azul por defecto de Swiper no es de ninguna marca de aquí: lo pasamos a navy. */
+.swiper{--swiper-theme-color:var(--navy);--swiper-navigation-size:24px}
+.swiper-pagination-bullet-active{background:var(--navy)}
+
+.status{margin-top:18px;padding:12px 16px;border-radius:10px;font-size:13.5px;font-weight:700;
+  display:flex;align-items:center;gap:9px}
+.status.ok{background:var(--ok-bg);color:var(--ok-ink);border-left:4px solid #4CAF50}
+.status.fail{background:#FDEDED;color:#5F2120;border-left:4px solid #C73A3A}
+
+pre{background:var(--navy);color:#E6ECFF;padding:18px 20px;border-radius:12px;overflow-x:auto;
+  font-size:13px;line-height:1.65;margin:0;
+  font-family:ui-monospace,Menlo,Consolas,monospace}
+pre .c{color:#8FA3D8}
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card);
+  border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th{text-align:left;background:#fbfcfe;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--ink-weak);font-weight:800;padding:11px 16px;border-bottom:1px solid var(--line)}
+td{padding:11px 16px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{background:#EEF1F7;border:1px solid var(--line);border-radius:4px;padding:1px 6px;
+  font-size:12.5px;font-family:ui-monospace,Menlo,Consolas,monospace;color:#2F5FCC}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--ink-weak)}
+a{color:#2F5FCC}
+@media (max-width:600px){
+  h1{font-size:26px}
+  .swiper-slide{height:200px;font-size:26px}
+  .demo{padding:14px}
+  .wrap{padding:0 14px 60px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Copia auto-hospedada</div>
+    <h1>Swiper 14.2.0</h1>
+    <p class="lead">
+      Esta página carga Swiper desde <code>./dist/</code> de este mismo repositorio, no desde un CDN
+      externo. Si el carrusel de abajo se desliza, los archivos hospedados funcionan.
+    </p>
+    <div class="chips">
+      <span class="chip neutral">MIT</span>
+      <span class="chip neutral">Publicada 26-ago-2026</span>
+      <span class="chip neutral">Integridad sha512 verificada</span>
+    </div>
+  </header>
+
+  <h2>Comprobación</h2>
+  <p>Arrastra, usa las flechas, los puntos o las teclas ← →. Tiene bucle y autoplay.</p>
+
+  <div class="demo">
+    <div class="swiper" id="demo">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide s1">1</div>
+        <div class="swiper-slide s2">2</div>
+        <div class="swiper-slide s3">3</div>
+        <div class="swiper-slide s4">4</div>
+        <div class="swiper-slide s5">5</div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="status" id="status">Comprobando…</div>
+  </div>
+
+  <h2>Cómo se usa</h2>
+  <p>Apuntando a los archivos de este repo.</p>
+<pre><span class="c">&lt;!-- CSS y JS auto-hospedados --&gt;</span>
+&lt;link rel="stylesheet" href="https://renatopuente-ux.github.io/swiper-selfhosted/dist/swiper-bundle.min.css"&gt;
+&lt;script src="https://renatopuente-ux.github.io/swiper-selfhosted/dist/swiper-bundle.min.js"&gt;&lt;/script&gt;
+
+&lt;div class="swiper"&gt;
+  &lt;div class="swiper-wrapper"&gt;
+    &lt;div class="swiper-slide"&gt;1&lt;/div&gt;
+    &lt;div class="swiper-slide"&gt;2&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="swiper-pagination"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  new Swiper('.swiper', {
+    loop: true,
+    pagination: { el: '.swiper-pagination', clickable: true },
+  });
+&lt;/script&gt;</pre>
+
+  <h2>Qué hay en <code>dist/</code></h2>
+  <p>Extraído del tarball de npm sin modificar un byte.</p>
+  <table>
+    <thead><tr><th>Archivo</th><th class="n">Peso</th><th>Para qué</th></tr></thead>
+    <tbody>
+      <tr><td><code>swiper-bundle.min.js</code></td><td class="n">149 KB</td><td><b>El habitual.</b> Core + todos los módulos</td></tr>
+      <tr><td><code>swiper-bundle.min.css</code></td><td class="n">14 KB</td><td>Estilos de todos los módulos</td></tr>
+      <tr><td><code>swiper-bundle.js</code></td><td class="n">419 KB</td><td>Sin minificar, para depurar</td></tr>
+      <tr><td><code>swiper-bundle.css</code></td><td class="n">20 KB</td><td>Estilos sin minificar</td></tr>
+      <tr><td><code>swiper.min.js</code></td><td class="n">65 KB</td><td>Solo el core, sin módulos</td></tr>
+      <tr><td><code>swiper.min.css</code></td><td class="n">4,3 KB</td><td>Estilos solo del core</td></tr>
+      <tr><td><code>swiper-element-bundle.min.js</code></td><td class="n">180 KB</td><td>Versión web component</td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    Swiper es de <b>Vladimir Kharlampidi</b>, licencia MIT · proyecto original en
+    <a href="https://github.com/nolimits4web/swiper">github.com/nolimits4web/swiper</a> ·
+    sitio en <a href="https://swiperjs.com">swiperjs.com</a>.<br>
+    Este repositorio es solo una redistribución sin modificar, para auto-hospedaje.
+  </footer>
+
+</div>
+
+<!-- El JS también sale de este repo. -->
+<script src="./dist/swiper-bundle.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var box = document.getElementById('status');
+
+  if (typeof Swiper !== 'function') {
+    box.className = 'status fail';
+    box.textContent = 'No se pudo cargar swiper-bundle.min.js desde ./dist/';
+    return;
+  }
+
+  var sw = new Swiper('#demo', {
+    loop: true,
+    speed: 550,
+    grabCursor: true,
+    keyboard: { enabled: true },
+    autoplay: { delay: 2600, disableOnInteraction: false, pauseOnMouseEnter: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    pagination: { el: '.swiper-pagination', clickable: true },
+  });
+
+  // Comprobamos que además de instanciarse, los módulos del bundle están activos:
+  // si faltaran, `navigation` o `pagination` no existirían en la instancia.
+  var mods = ['navigation','pagination','autoplay','keyboard'].filter(function(m){ return !sw[m]; });
+
+  if (mods.length) {
+    box.className = 'status fail';
+    box.textContent = 'Swiper cargó, pero faltan módulos: ' + mods.join(', ');
+  } else {
+    box.className = 'status ok';
+    box.textContent = 'Swiper ' + (window.Swiper.version || '14.2.0')
+      + ' cargado desde ./dist/ · navegación, paginación, autoplay y teclado activos.';
+  }
+})();
+</script>
+</body>
+</html>
